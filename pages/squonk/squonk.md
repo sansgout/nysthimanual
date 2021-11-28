@@ -81,11 +81,19 @@ In the leftmost column are the trigger inputs. When a trigger is received at one
 
 The five knobs in the A, B, C, D, and E columns control the voltages that will be sent to the output jacks (also labeled A, B, C, D, and E) immediately below the columns. The knobs in columns A, B, and C have a range of 0 to +2 volts; columns D and E have a range from -1 to +1 volts. When the x5 button for a row is lighted (green), the output values are multiplied by 5. The knobs' outputs are not quantized to equal-tempered half-steps, so a quantizer module (or several of them) will be a useful accessory for processing Squonk's output.
 
-At the right end of each row is a trigger output jack. This will fire when the step is active. It will operate in one of four modes, depending on the setting of the lamp in the mode column for that row.
-
 There are four possible settings for each mode lamp: yellow, blue, red, and dark gray. Yellow is normal; the trigger output will operate as described above. When the lamp is blue, no trigger will be sent, but in other respects the step will operate normally. The other two modes are significant only when Squonk is being stepped from the clock input (see below). When the mode lamp is dark gray, Squonk will skip that step. When it's red, Squonk will reset to the first step (or to the last step, if it's being clocked in the upward direction) instead of playing the red step. Red blocks the stepping process.
 
 The rep (repeat) knob is active only when Squonk is receiving an external clock signal. The knob can be set to values from 1 to 8. This setting subdivides the trigger being sent to the corresponding output jack. If Squonk is being clocked in quarter-notes, for instance, the mode lamp is yellow, and the knob is set to 4, when that step is reached the trigger output will send four pulses at a sixteenth-note rate instead of a single pulse.
+
+There is a trigger output jack for each row. A trigger is fired the instant a step/row is activated. If repeats are active, the trigger will fire a ratchet. 
+It will operate in one of four modes, depending on the setting of the lamp in the mode column for that row.
+
+The gate row will send a gate for as long as the row is active. 
+
+'Bridge' pairs an input and output jack. Input can be any monophonic signal (in- or external i.e.: audio, cv, clk/trg/gate). The input signal will be sent to the output jack only while the corresponding channel is active. A possible scenario would be to bind a clock signal/trigger sequence to (a) specific step(s): advance another sequence, activate an arpeggio, trigger a drumfill. You could also send audio into effects. 
+
+'Over A' takes (like 'Bridge') an monophonic voltage for input. 'Over A's input overwrites column A's knob and chain in values for its respective row. 
+While the row is active, 'Over A's input is sent directly to column As output. Add random voltages to some steps of column A for example. You could use the whole column as a switch: take the trigger/gate outputs of each row to activate various envelopes and send these to 'Over A'. 
 
 ---
 
@@ -108,6 +116,8 @@ The inputs in the CHAIN row are for chaining multiple Squonks.
 In the row below the chain row are the start, stop, and reset trigger inputs. Resetting sends Squonk to the 12th step (or to the first step, if the clock is set to UP mode), so that the next clock received will start the sequence at step 1 (or 12).
 
 The randomize all jack turns Squonk into a machine with zero predictability. A trigger at this input is probably too extreme to be very useful musically, as the x5, mode, and repeat settings are all randomized along with the knobs. For the button to work, you MUST hold down Ctrl (Mac Cmd), but a trigger to the jack does not need this.
+
+The sections affected by 'randomize all' can be specified in the context menu (right-click on Squonk). CV Line A, B, C, D, E, Repetitions, Direction, x5 multiplier and MODE can be turned on/off. Per default all sections are turned on.  
 
 ---
 
